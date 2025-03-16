@@ -1,11 +1,11 @@
 
 
-function Content() {
+function Content(props) {
 
     return (
         <div>
             <h2>
-                Content
+                {props.title}
             </h2>
         </div>
     )

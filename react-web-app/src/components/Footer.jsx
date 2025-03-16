@@ -5,9 +5,9 @@ function Footer() {
     return(
 
         <footer>
-            <h1>
+            <h3>
                 Footer
-            </h1>
+            </h3>
         </footer>
 
     )
