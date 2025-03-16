@@ -1,7 +1,7 @@
-function Button() {
+function Button(props) {
     return (
         <button>
-            Find your book!
+            {props.name}
         </button>
     )
 }
