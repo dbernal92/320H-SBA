@@ -1,18 +1,3 @@
-.content-container {
-    display: flex;
-    justify-content: center;
-}
-
-#tbr {
-    display: flex;
-    justify-content: space-around;
-    /* max-width: auto; */
-    gap: 10px;
-  }
-
-  /* Google Font for Aesthetic Look */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap');
-
 :root {
     --bg-light: #4f97519a;
     --text-light: #333;
@@ -27,21 +12,13 @@
     --transition: all 0.3s ease-in-out;
 }
 
-@keyframes rainEffect {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
+/* Keep Background Styling */
 body {
     background-image: url('https://64.media.tumblr.com/45fd674e7f01d063d8f2b6157b6209d2/8f456680780c1c97-1e/s1280x1920/0b4632544520f9f411780000cab0a0c2ff97b09c.gifv');
     background-size: 40%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-}
-
-
-body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-light);
     color: var(--text-light);
@@ -50,94 +27,56 @@ body {
     transition: var(--transition);
 }
 
-/* Dark Mode */
+/* Dark Mode Fix (Keeps background in dark mode) */
 .dark-mode {
     background-color: var(--bg-dark);
     color: var(--text-dark);
     background-image: url('https://64.media.tumblr.com/ceb0006752af9d6dc1cf665e098f8fdf/9f4e007492e31c68-7a/s540x810/0c72fcaf1f11b8ea34d266e1ffb30a4ce3002589.gifv');
 }
 
-.dark-mode header {
-    background-color: var(--card-bg-dark);
-}
-
-.dark-mode .search-box input {
-    background-color: var(--card-bg-dark);
-    color: var(--text-dark);
-    border: 2px solid var(--accent-dark);
-}
-
-.dark-mode .search-box button {
-    background-color: var(--accent-dark);
-    color: var(--text-dark);
-}
-
-.dark-mode .search-box button:hover {
-    background-color: #5d9cec; /* Lighter blue for hover effect */
-}
-
-.dark-mode .book-card {
-    background-color: var(--card-bg-dark);
-}
-
-/* Theme Toggle */
-.theme-toggle {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-}
-
-#darkModeToggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Header */
-header {
-    text-align: center;
-    padding: 2rem 0;
-    background-color: var(--card-bg-light);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+/* Fix Navbar Container */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    /* Keeps search bar & dark mode button apart */
+    align-items: center;
+    /* Aligns items vertically */
+    padding: 15px;
+    max-width: 900px;
+    /* Prevents navbar from stretching too wide */
     margin: 20px auto;
-    max-width: 700px;
+    /* Centers navbar */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Adds a slight transparent bg */
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    /* Gives it a soft frosted-glass effect */
 }
 
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-/* Search Box */
+/* Search Bar */
 .search-box {
     display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+    align-items: center;
+    gap: 10px;
+    /* Spaces input and button */
 }
 
 .search-box input {
-    padding: 12px;
-    width: 60%;
-    max-width: 400px;
+    padding: 10px;
+    width: 280px;
+    /* Slightly smaller width */
     border: 2px solid var(--accent-light);
-    border-radius: 25px;
+    border-radius: 20px;
     font-size: 1rem;
-    outline: none;
-    transition: var(--transition);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-light);
 }
 
-.search-box input:focus {
-    border-color: var(--accent-dark);
-}
-
+/* Search Button */
 .search-box button {
-    padding: 12px 20px;
-    margin-left: 10px;
+    padding: 10px 15px;
     border: none;
-    border-radius: 25px;
+    border-radius: 20px;
     background-color: var(--accent-light);
     color: white;
     font-size: 1rem;
@@ -149,10 +88,39 @@ h1 {
     background-color: var(--accent-dark);
 }
 
-/* Results Grid */
+/* Dark Mode Button */
+.dark-mode-toggle {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--accent-dark);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dark-mode .search-box input {
+    border: 2px solid var(--accent-dark);
+}
+
+.dark-mode .search-box button {
+    background-color: var(--accent-dark);
+}
+
+.dark-mode .search-box button:hover {
+    background-color: #5d9cec;
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--accent-dark);
+}
+
+/* Grid Layout for Results & Book Lists */
 .results-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    /* Auto-adjust columns */
     gap: 20px;
     padding: 30px;
     max-width: 1100px;
@@ -161,13 +129,16 @@ h1 {
 
 /* Book Cards */
 .book-card {
-    background-color: var(--card-bg-light);
+    /* background-color: var(--card-bg-light); */
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: var(--transition);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Adds a slight transparent bg */
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
 }
 
 .book-card:hover {
@@ -203,4 +174,43 @@ footer {
     padding: 15px;
     font-size: 0.9rem;
     color: gray;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Container for the three sections */
+.content-container {
+    display: flex;
+    justify-content: space-around;
+    /* Spaces them evenly */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+    flex-wrap: wrap;
+    /* Ensures responsiveness */
+}
+
+/* Each section should take equal width */
+.content-section {
+    flex: 1;
+    min-width: 250px;
+    /* Prevents sections from getting too small */
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: gray;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    
+    /* Removes fixed positioning */
+    position: relative;
+    width: 100%;
 }

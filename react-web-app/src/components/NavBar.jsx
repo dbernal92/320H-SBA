@@ -10,18 +10,20 @@ const NavBar = ({ setSearchResults, toggleDarkMode, darkMode }) => {
     };
 
     return (
-        <nav>
+        <nav className="nav-container">
             {/* Search Bar */}
-            <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Find your next read..."
-            />
-            <button onClick={handleSearch}>Search</button>
+            <div className="search-box">
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Find your next read..."
+                />
+                <button id="book-search" onClick={handleSearch}>Now!</button>
+            </div>
 
             {/* Dark Mode Toggle */}
-            <button onClick={toggleDarkMode}>
+            <button className="dark-mode-toggle" onClick={toggleDarkMode}>
                 {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
             </button>
         </nav>
