@@ -177,7 +177,7 @@ body {
 
 /* Dark Mode Adjustments */
 .dark-mode .book-card {
-    background-color: var(--card-bg-dark);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Footer */
@@ -222,4 +222,29 @@ footer {
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     width: 100%;
+}
+
+
+#bookshelf {
+    width: 140px; /* Reduce width */
+    height: auto; /* Allow height to adjust */
+}
+
+#bookshelf img {
+    width: 100%; /* Ensure the image fits inside */
+    height: 180px; /* Reduce image height */
+    object-fit: contain; /* Keep the whole cover visible */
+    border-radius: 5px;
+}
+
+/* Ensure the carousel fits properly */
+.slick-slide {
+    display: flex !important;
+    justify-content: center;
+}
+
+/* Reduce the padding of the carousel */
+.slick-slider {
+    max-width: 95%;
+    margin: 0 auto;
 }

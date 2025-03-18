@@ -46,9 +46,24 @@ const Content = ({
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: books.length >= 3 ? 3 : books.length,
+        slidesToShow: books.length >= 1 ? 1 : books.length,
         slidesToScroll: 1,
-        responsive: []
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
     };
 
     return (
@@ -61,21 +76,22 @@ const Content = ({
 
             {(isVisible && title !== "Results" && books.length > 0) && (
                 <div className="results-grid">
-                    {books.map((book) => (
-                        <div key={book.key} className="book-card">
-                            <img
-                                src={book.cover_i
-                                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-                                    : "https://placehold.co/200x300"
-                                }
-                                alt={book.title}
-                            />
-                            <h3>{book.title || "Untitled"}</h3>
-                            <p>{book.author_name ? book.author_name.join(", ") : "Unknown Author"}</p>
-                            <button onClick={() => removeBook(book.key)}>Remove</button>
-                        </div>
-
-                    ))}
+                    <Slider {...sliderSettings}>
+                        {books.map((book) => (
+                            <div key={book.key} className="book-card" id="bookshelf">
+                                <img
+                                    src={book.cover_i
+                                        ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+                                        : "https://placehold.co/200x300"
+                                    }
+                                    alt={book.title}
+                                />
+                                <h3>{book.title || "Untitled"}</h3>
+                                <p>{book.author_name ? book.author_name.join(", ") : "Unknown Author"}</p>
+                                <button onClick={() => removeBook(book.key)}>Remove</button>
+                            </div>
+                        ))}
+                    </Slider>
                 </div>
             )}
 
