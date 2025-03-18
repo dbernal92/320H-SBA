@@ -1,0 +1,33 @@
+import { useState } from "react";
+
+const Content = ({ 
+    title, 
+    books = [], 
+    setBooks, 
+    searchResults = [], 
+    setWantToRead, 
+    setCurrentlyReading, 
+    setCompletedReads 
+}) => {
+    // Only apply toggling to bookshelf sections
+    const isToggleable = ["Want to Read", "Currently Reading", "Completed Reads"].includes(title);
+    const [isVisible, setIsVisible] = useState(false); // Start visible by default
+
+    const toggleVisibility = () => {
+        if (isToggleable) {
+            setIsVisible((prev) => !prev);
+        }
+    };
+
+
+
+
+
+
+    return (
+        <div className="content-section" id="results">
+            {/* Toggle visibility when clicking the title */}
+            <h2 onClick={toggleVisibility} style={{ cursor: isToggleable ? "pointer" : "default" }}>
+                {title} {isToggleable && (isVisible ? "▼" : "▶")} 
+            </h2>
+

@@ -19,13 +19,25 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "IM Fell French Canon", serif;
     background-color: var(--bg-light);
     color: var(--text-light);
     margin: 0;
     padding: 0;
     transition: var(--transition);
 }
+
+.im-fell-french-canon-regular {
+    font-family: "IM Fell French Canon", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .im-fell-french-canon-regular-italic {
+    font-family: "IM Fell French Canon", serif;
+    font-weight: 400;
+    font-style: italic;
+  }  
 
 /* Dark Mode Fix (Keeps background in dark mode) */
 .dark-mode {
@@ -209,8 +221,5 @@ footer {
     color: gray;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
-    
-    /* Removes fixed positioning */
-    position: relative;
     width: 100%;
 }

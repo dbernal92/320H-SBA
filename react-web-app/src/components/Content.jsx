@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Content = ({ 
     title, 
     books = [], 
@@ -7,7 +9,16 @@ const Content = ({
     setCurrentlyReading, 
     setCompletedReads 
 }) => {
-    
+    // Toggle bookshelves
+    const isToggleable = ["Want to Read", "Currently Reading", "Completed Reads"].includes(title);
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+        if (isToggleable) {
+            searchResults((prev) => !prev);
+        }
+    };
+
     // Function to add a book to a selected list
     const addBook = (book, category) => {
         console.log(`Adding book to ${category}:`, book);
@@ -30,11 +41,17 @@ const Content = ({
 
     return (
         <div className="content-section" id="results">
+            {(title !== "Results" || searchResults.length >0) && (
+                <h2 onClick={toggleVisibility} style={{ cursor: isToggleable ?"pointer" : "default" }}>
+                    {title} {isToggleable && (isVisible ? "▼" : "▼")}
+                </h2>
+            )}
+
             {/* Show title only if results exist for "Results" */}
-            {title === "Results" && searchResults.length > 0 && <h2>{title}</h2>}
+            {/* {title === "Results" && searchResults.length > 0 && <h2>{title}</h2>} */}
 
             {/* Always show title for book lists */}
-            {title !== "Results" && <h2>{title}</h2>}
+            {/* {title !== "Results" && <h2>{title}</h2>} */}
 
             {/* Book Lists: Want to Read, Currently Reading, Completed Reads */}
             {title !== "Results" && books.length > 0 && (
