@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-const Content = ({ 
-    title, 
-    books = [], 
-    setBooks, 
-    searchResults = [], 
-    setWantToRead, 
-    setCurrentlyReading, 
-    setCompletedReads 
+const Content = ({
+    title,
+    books = [],
+    setBooks,
+    searchResults = [],
+    setWantToRead,
+    setCurrentlyReading,
+    setCompletedReads
 }) => {
     // Toggle bookshelves
     const isToggleable = ["Want to Read", "Currently Reading", "Completed Reads"].includes(title);
@@ -15,14 +15,14 @@ const Content = ({
 
     const toggleVisibility = () => {
         if (isToggleable) {
-            searchResults((prev) => !prev);
+            setIsVisible((prev) => !prev);
         }
     };
 
     // Function to add a book to a selected list
     const addBook = (book, category) => {
         console.log(`Adding book to ${category}:`, book);
-    
+
         if (category === "Want to Read" && setWantToRead) {
             setWantToRead((prev) => [...prev, book]);
         } else if (category === "Currently Reading" && setCurrentlyReading) {
@@ -41,48 +41,43 @@ const Content = ({
 
     return (
         <div className="content-section" id="results">
-            {(title !== "Results" || searchResults.length >0) && (
-                <h2 onClick={toggleVisibility} style={{ cursor: isToggleable ?"pointer" : "default" }}>
-                    {title} {isToggleable && (isVisible ? "▼" : "▼")}
+            {(title !== "Results" || searchResults.length > 0) && (
+                <h2 onClick={toggleVisibility} style={{ cursor: isToggleable ? "pointer" : "default" }}>
+                    {title} {isToggleable && (isVisible ? "▼" : "▶")}
                 </h2>
             )}
 
-            {/* Show title only if results exist for "Results" */}
-            {/* {title === "Results" && searchResults.length > 0 && <h2>{title}</h2>} */}
-
-            {/* Always show title for book lists */}
-            {/* {title !== "Results" && <h2>{title}</h2>} */}
-
-            {/* Book Lists: Want to Read, Currently Reading, Completed Reads */}
-            {title !== "Results" && books.length > 0 && (
+            {(isVisible && title !== "Results" && books.length > 0) && (
                 <div className="results-grid">
                     {books.map((book) => (
                         <div key={book.key} className="book-card">
-                            <img 
-                                src={book.cover_i 
-                                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` 
+                            <img
+                                src={book.cover_i
+                                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
                                     : "https://placehold.co/200x300"
-                                } 
+                                }
                                 alt={book.title}
                             />
                             <h3>{book.title || "Untitled"}</h3>
                             <p>{book.author_name ? book.author_name.join(", ") : "Unknown Author"}</p>
                             <button onClick={() => removeBook(book.key)}>Remove</button>
                         </div>
+
                     ))}
                 </div>
             )}
+
 
             {/* Search Results Section */}
             {title === "Results" && searchResults.length > 0 && (
                 <div className="results-grid">
                     {searchResults.map((book) => (
                         <div key={book.key} className="book-card">
-                            <img 
-                                src={book.cover_i 
-                                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` 
+                            <img
+                                src={book.cover_i
+                                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
                                     : "https://placehold.co/200x300"
-                                } 
+                                }
                                 alt={book.title}
                             />
                             <h3>{book.title || "Untitled"}</h3>
