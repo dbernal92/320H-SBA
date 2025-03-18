@@ -15,7 +15,6 @@ This is a book tracking web application that allows users to search for books, c
 - Dark mode toggle for user preference.
 
 - Book carousel display using Slick Carousel.
-Currently, two official plugins are available:
 
 ## Tech Stack
 
@@ -26,6 +25,14 @@ Currently, two official plugins are available:
 - Slick Carousel (for book displays)
 
 - CSS (for styling and dark mode support)
+
+## Future Enhancements
+
+- Implement pagination for efficient searches.
+
+- Add user authentication for personalized tracking.
+
+- Improve UI/UX with animations and design refinements.
 
 ## Component
 
