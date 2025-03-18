@@ -5,7 +5,7 @@ function Footer() {
     return(
 
         <footer>
-                Footer
+                Made with ❤️ by Darien
         </footer>
 
     )
