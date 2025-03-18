@@ -1,4 +1,7 @@
 import { useState } from "react";
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import Slider from "react-slick"
 
 const Content = ({
     title,
@@ -37,6 +40,15 @@ const Content = ({
         if (setBooks) {
             setBooks((prevBooks) => prevBooks.filter((b) => b.key !== bookKey));
         }
+    };
+
+    const sliderSettings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: books.length >= 3 ? 3 : books.length,
+        slidesToScroll: 1,
+        responsive: []
     };
 
     return (
