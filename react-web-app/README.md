@@ -1,12 +1,64 @@
-# React + Vite
+# Book Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
+This is a book tracking web application that allows users to search for books, categorize them into different reading lists (Want to Read, Currently Reading, Completed Reads), and toggle between light and dark modes.
+
+## Features
+
+- Search for books using the Open Library API.
+
+- Add books to different reading categories.
+
+- Remove books from lists.
+
+- Dark mode toggle for user preference.
+
+- Book carousel display using Slick Carousel.
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React.js (for UI components and state management)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Open Library API (for fetching book data)
+
+- Slick Carousel (for book displays)
+
+- CSS (for styling and dark mode support)
+
+## Component
+
+### App.js
+
+- Manages global state.
+
+- Handles dark mode toggle.
+
+- Renders NavBar, Content sections, and Footer.
+
+### NavBar.js
+
+- Includes a search bar that fetches books from the Open Library API.
+
+- Allows users to toggle between dark and light modes.
+
+### Content.js
+
+- Displays books in different categories.
+
+- Uses Slick Carousel for book visualization.
+
+- Allows users to add or remove books from lists.
+
+### Button.js
+
+- A reusable button component for consistent UI styling.
+
+- Used for search, toggling dark mode, and book list actions.
+
+### fetchBooks.js
+
+- Fetches book data from the Open Library API.
+
+- Limits search results to 15.
