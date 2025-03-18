@@ -1,31 +1,38 @@
 import { useState } from "react";
 import { fetchBooks } from "../services/fetchBooks";
+import Button from "./Button";
 
 const NavBar = ({ setSearchResults, toggleDarkMode, darkMode }) => {
     const [searchQuery, setSearchQuery] = useState("");
 
-    const handleSearch = async () => {
+    const handleSearch = async (e) => {
+        if (e) e.preventDefault(); // Prevent the page from refreshing
+
+        if (!searchQuery.trim()) return; // Avoid empty searches
+
         const results = await fetchBooks(searchQuery);
         setSearchResults(results);
     };
 
     return (
         <nav className="nav-container">
-            {/* Search Bar */}
-            <div className="search-box">
+            {/* Wrap input and button in a form */}
+            <form onSubmit={handleSearch} className="search-box">
                 <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Find your next read..."
                 />
-                <button id="book-search" onClick={handleSearch}>Now!</button>
-            </div>
+                <Button name="Now!" onClick={handleSearch} type="submit" />
+            </form>
 
             {/* Dark Mode Toggle */}
-            <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-                {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-            </button>
+            <Button 
+                name={darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"} 
+                onClick={toggleDarkMode} 
+                className="dark-mode-toggle" 
+            />
         </nav>
     );
 };
